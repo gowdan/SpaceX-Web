@@ -1,0 +1,107 @@
+<div class="container-fluid">
+      <h1>SpaceX Launch Programs</h1>
+    <div class="row content">
+      <div class="col-lg-2 col-md-6 col-sm-6 col-xs-6">
+            <div style="padding-top: 12px;">
+              <p class="filterStyle">Filters</p>
+            </div>
+        
+            <div>
+              <p style="text-align: center;text-decoration: underline;font-size: 14px;">Launch Year</p>
+            </div>
+        
+            <div class="row">
+
+            <div class="col-xs-6 flex-container" *ngFor="let year of yearsList"> 
+                <button class="button" [ngClass]=" selectedYear == year  ? 'buttonSelected' : 'button'"  (click)="filterByYear(year);" >{{year}}</button>
+            </div>
+
+          </div>
+
+            <div>
+                <p style="text-align: center;text-decoration: underline; font-size: 14px;">Successful Launch</p>
+            </div>
+        
+            <div class="flex-container">
+                <button [ngClass]=" selectedLaunchStatus == 'true'  ? 'buttonSelected' : 'button'" (click)="filterBylaunch('true');" style="float: left;" class="button">TRUE</button>
+                <button [ngClass]=" selectedLaunchStatus == 'false'  ? 'buttonSelected' : 'button'" (click)="filterBylaunch('false');" style="float: right; margin-right: 20px;" class="button">FALSE</button> 
+            </div>
+            
+            <div>
+                <p style="text-align: center;text-decoration: underline; font-size: 14px;">Successful Landing</p>
+            </div>
+        
+            <div class="flex-container">
+                <button [ngClass]=" selectedLandingStatus == 'true'  ? 'buttonSelected' : 'button'" (click)="filterBylanding('true');" style="float: left;"   class="button">TRUE</button>
+                <button [ngClass]=" selectedLandingStatus == 'false'  ? 'buttonSelected' : 'button'" (click)="filterBylanding('false');" style="float: right; margin-right: 20px;" class="button">FALSE</button> 
+            </div>
+        
+      </div>
+      <br>
+      
+      <div class="col-lg-10 col-md-6 col-sm-6 col-xs-6">
+        <div class="row">
+          <div class="col-lg-3 col-md-6 col-sm-12 col-xs-12" *ngFor="let dd of landingTileDetail">
+            <div class="well">
+              <div>
+                <img style="height:250px;width:250px; padding:12px;" [src]="dd.links.mission_patch_small" alt="Mission Image">
+              </div>
+              <p class="flightNameAndNum">{{dd.mission_name}} #{{dd.flight_number}}</p>
+              <p class="missionidsTitle">Mission Ids</p>
+              <p class="missionidsValue"> {{ dd.mission_id }}</p>
+              <p class="launchYearTitle">Launch Year: <span class="launchYearValue"> {{ dd.launch_year }} </span> </p>
+              <p class="SuccessfulLaunchTitle">Successful Launch: <span class="SuccessfulLaunchValue"> {{ dd.launch_success }} </span> </p>              
+              <p class="SuccessfulLaunchTitle">Successful Landing: <span class="SuccessfulLaunchValue"> {{ dd.rocket.first_stage.cores[0].land_success }} </span> </p>
+            </div>
+          </div>
+          <div class="center" *ngIf="changeFilterMessage">
+            <p class="noDataMessage">No Data Available for this filter, Please change the filters.</p>
+          </div>
+      
+
+        </div>
+
+
+    
+        <div class="footer">
+            <p class="developerInfo">Developed By :<a target="_blank" style="color:black;text-decoration: underline;" href="https://www.linkedin.com/in/ngowdre/">  
+              <span> 
+                NITIN GOWDA L
+              </span>  </a>  
+            </p>
+          </div>
+  
+
+      </div>
+
+
+
+    </div>
+
+
+
+
+  </div>
+  
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+    
+  
+
+
